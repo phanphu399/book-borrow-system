@@ -88,13 +88,15 @@ export async function login(req, res, next) {
   if (!req.body?.username || !req.body?.password)
     return next(new ApiError(400, "Username or password cannot be empty"));
   try {
-    const { username, password } = req.body;
-
-    const reader = await ReaderService.findByUserName(username);
-    if (!reader)
+    const reader = await readerService.findByUserName(req.body.username);
+    if (!reader) {
       return next(new ApiError(401, "Invalid username or password."));
+    }
 
-    const passwordIsValid = await bcrypt.compare(password, reader.password);
+    const passwordIsValid = await bcrypt.compare(
+      req.body.password,
+      reader.password
+    );
     if (!passwordIsValid)
       return next(new ApiError(401, "Invalid username or password."));
 

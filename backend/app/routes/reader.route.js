@@ -1,18 +1,18 @@
 import readerController from "../controllers/reader.controller.js";
 import express from "express";
-
+import auth from "./../middlewares/auth.middleware.js";
 const router = express.Router();
-
+router.post("/login", readerController.login);
+router.post("/register", readerController.create);
 router
   .route("/")
-  .get(readerController.findAll)
+  .get(auth, readerController.findAll)
   .post(readerController.create)
-  .put(readerController.update)
-  .delete(readerController.deleteAll);
+  .delete(auth, readerController.deleteAll);
 
 router
   .route("/:id")
-  .get(readerController.findOne)
-  .put(readerController.update)
-  .delete(readerController.deleteOne);
+  .get(auth, readerController.findOne)
+  .put(auth, readerController.update)
+  .delete(auth, readerController.deleteOne);
 export default router;

@@ -88,10 +88,11 @@ export async function login(req, res, next) {
   if (!req.body?.username || !req.body?.password)
     return next(new ApiError(400, "Username or password cannot be empty"));
   try {
-    // const { username, password } = req.body;
-
     const staff = await staffService.findByUserName(req.body.username);
-    if (!staff) return next(new ApiError(401, "Invalid username or password."));
+
+    if (!staff) {
+      return next(new ApiError(401, "Invalid username or password."));
+    }
 
     const passwordIsValid = await bcrypt.compare(
       req.body.password,

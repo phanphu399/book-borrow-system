@@ -1,18 +1,17 @@
 import express from "express";
 import BookController from "../controllers/book.controller.js";
-
+import auth from "./../middlewares/auth.middleware.js";
 const router = express.Router();
 
 router
   .route("/")
-  .get(BookController.findAll)
   .post(BookController.create)
-  .put(BookController.update)
-  .delete(BookController.deleteAll);
+  .get(BookController.findAll)
+  .delete(auth, BookController.deleteAll);
 
 router
   .route("/:id")
   .get(BookController.findOne)
-  .put(BookController.update)
-  .delete(BookController.deleteOne);
+  .put(auth, BookController.update)
+  .delete(auth, BookController.deleteOne);
 export default router;

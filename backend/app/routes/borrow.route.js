@@ -1,19 +1,18 @@
 import borrowController from "../controllers/borrow.controller.js";
-
+import auth from "./../middlewares/auth.middleware.js";
 import express from "express";
 
 const router = express.Router();
 
 router
   .route("/")
-  .get(borrowController.findAll)
+  .get(auth, borrowController.findAll)
   .post(borrowController.create)
-  .put(borrowController.update)
-  .delete(borrowController.deleteAll);
+  .delete(auth, borrowController.deleteAll);
 
 router
   .route("/:id")
-  .get(borrowController.findOne)
-  .put(borrowController.update)
-  .delete(borrowController.deleteOne);
+  .get(auth, borrowController.findOne)
+  .put(auth, borrowController.update)
+  .delete(auth, borrowController.deleteOne);
 export default router;

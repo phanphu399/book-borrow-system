@@ -1,18 +1,18 @@
 import express from "express";
 
 import publisherController from "../controllers/publisher.controller.js";
+import auth from "./../middlewares/auth.middleware.js";
 const router = express.Router();
 
 router
   .route("/")
   .get(publisherController.findAll)
-  .post(publisherController.create)
-  .put(publisherController.update)
-  .delete(publisherController.deleteAll);
+  .post(auth, publisherController.create)
+  .delete(auth, publisherController.deleteAll);
 
 router
   .route("/:id")
   .get(publisherController.findOne)
-  .put(publisherController.update)
-  .delete(publisherController.deleteOne);
+  .put(auth, publisherController.update)
+  .delete(auth, publisherController.deleteOne);
 export default router;

@@ -6,9 +6,16 @@ class BorrowService {
       staff_id: payload.staff_id,
       book_id: payload.book_id,
       borrowDate: payload.borrowDate || new Date(),
-      returnDate: payload.returnDate || null,
-      status: payload.status,
+      returnDate:
+        payload.returnDate ||
+        (() => {
+          const date = new Date();
+          date.setDate(date.getDate() + 15);
+          return date;
+        })(),
+      status: payload.status || "pending",
     };
+
     Object.keys(borrow).forEach((key) => {
       return borrow[key] === undefined && delete borrow[key];
     });

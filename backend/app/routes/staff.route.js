@@ -1,21 +1,20 @@
 import staffController from "../controllers/staff.controller.js";
 import auth from "./../middlewares/auth.middleware.js";
 import express from "express";
-const router = express();
 
+const router = express.Router();
+router.post("/login", staffController.login);
+router.post("/register", staffController.create);
 router
   .route("/")
-  .get(staffController.findAll)
+  .get(auth, staffController.findAll)
   .post(staffController.create)
-  .put(staffController.update)
-  .delete(staffController.deleteAll);
+  .delete(auth, staffController.deleteAll);
 
 router
   .route("/:id")
-  .get(staffController.findOne)
-  .put(staffController.update)
-  .delete(staffController.deleteOne);
-
-router.route("/login").post(staffController.login);
+  .get(auth, staffController.findOne)
+  .put(auth, staffController.update)
+  .delete(auth, staffController.deleteOne);
 
 export default router;

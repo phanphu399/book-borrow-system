@@ -49,8 +49,9 @@ class ReaderService {
   async findByID(id) {
     return await Reader.findById({ _id: id });
   }
+
   async findByUserName(userName) {
-    return await Reader.find({
+    return await Reader.findOne({
       username: userName,
     });
   }

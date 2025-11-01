@@ -10,7 +10,7 @@ class StaffService {
       username: payload.username,
       password: payload.password,
     };
-
+    //Truong hop update field khac,tranh hash undefine
     if (Staff.password) {
       Staff.password = await bcrypt.hash(Staff.password, 12);
     }
@@ -46,7 +46,7 @@ class StaffService {
   async findByUserName(userName) {
     return await Staff.findOne({
       username: userName,
-    }).select("+password");
+    });
   }
 
   async findByID(id) {
