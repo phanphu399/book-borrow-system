@@ -3,7 +3,7 @@ import ApiError from "../api-error.js";
 const borrowService = new BorrowService();
 async function create(req, res, next) {
   if (
-    !req.body?.reader_id ||
+    !req.body?.user_id ||
     !req.body?.book_id ||
     !req.body?.staff_id ||
     !req.body?.borrowDate
@@ -16,7 +16,7 @@ async function create(req, res, next) {
     );
   // So lan muon cho mot quyen sach
   const bookBorrowCount = await borrowService.find({
-    reader_id: req.body.reader_id,
+    user_id: req.body.user_id,
     book_id: req.body.book_id,
     status: {
       $in: ["pending", "borrowing"],
@@ -28,7 +28,7 @@ async function create(req, res, next) {
     );
   //Tong so lan muon sach
   const totalActiveBorrowCount = await borrowService.find({
-    reader_id: req.body.reader_id,
+    user_id: req.body.user_id,
 
     status: {
       $in: ["pending", "borrowing"],

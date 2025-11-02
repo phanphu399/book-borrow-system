@@ -2,7 +2,7 @@ import Borrow from "./../models/borrow.model.js";
 class BorrowService {
   extractData(payload) {
     const borrow = {
-      reader_id: payload.reader_id,
+      user_id: payload.user_id,
       staff_id: payload.staff_id,
       book_id: payload.book_id,
       borrowDate: payload.borrowDate || new Date(),
@@ -35,7 +35,7 @@ class BorrowService {
 
   async find(filter) {
     return await Borrow.find(filter)
-      .populate({ path: "reader_id", model: "Reader" })
+      .populate({ path: "user_id", model: "User" })
       .populate({
         path: "book_id",
         populate: {
@@ -51,7 +51,7 @@ class BorrowService {
 
   async findByID(id) {
     return await Borrow.findById({ _id: id })
-      .populate({ path: "reader_id", model: "Reader" })
+      .populate({ path: "user_id", model: "User" })
       .populate({
         path: "book_id",
         populate: {
@@ -64,8 +64,8 @@ class BorrowService {
         model: "Staff",
       });
   }
-  async findByReaderId(reader_id) {
-    return await Borrow.find({ reader_id: reader_id });
+  async findByUserId(user_id) {
+    return await Borrow.find({ user_id: user_id });
   }
 
   async update(id, payload) {

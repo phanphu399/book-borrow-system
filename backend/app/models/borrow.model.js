@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const borrowSchema = new mongoose.Schema(
   {
-    reader_id: {
+    user_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Reader",
+      ref: "User",
       required: true,
     },
     book_id: {
