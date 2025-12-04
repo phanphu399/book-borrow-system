@@ -8,12 +8,16 @@ const ApiClient = (baseUrl) => {
       Accept: "application/json",
     },
   });
-
+  // Truoc khi gui req (gan token vao header)
   apiClient.interceptors.request.use((config) => {
-    const token = localStorage.getItem("authenticateToken");
+    const current = sessionStorage.getItem("currentLogin");
+    const section = sessionStorage.getItem(current + "Section");
+    const token = section ? JSON.parse(section).token : null;
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    // console.log(config.headers.Authorization);
     return config;
   });
 

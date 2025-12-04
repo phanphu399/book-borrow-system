@@ -15,7 +15,6 @@ const borrowSchema = new mongoose.Schema(
     staff_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Staff",
-      required: true,
     },
     borrowDate: {
       type: Date,
@@ -25,9 +24,19 @@ const borrowSchema = new mongoose.Schema(
     returnDate: {
       type: Date,
     },
+    deadline: {
+      type: Date,
+    },
     status: {
       type: String,
-      enum: ["pending", "borrowing", "returned", "overdue"],
+      enum: [
+        "pending",
+        "borrowing",
+        "pending_return",
+        "returned",
+        "overdue",
+        "rejected",
+      ],
       default: "pending",
     },
   },

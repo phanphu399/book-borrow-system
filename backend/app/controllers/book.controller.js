@@ -73,7 +73,7 @@ export async function findAll(req, res, next) {
 
 export async function deleteOne(req, res, next) {
   try {
-    const doc = await bookService.deleteOne(req.params.id);
+    const doc = await bookService.delete(req.params.id);
 
     if (!doc) {
       return next(new ApiError(404, "Book not found"));

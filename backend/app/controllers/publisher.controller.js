@@ -70,7 +70,7 @@ export async function findAll(req, res, next) {
 
 export async function deleteOne(req, res, next) {
   try {
-    const doc = await publisherService.deleteOne(req.params.id);
+    const doc = await publisherService.delete(req.params.id);
     if (!doc) return next(new ApiError(404, "Publisher not found"));
     return res.status(200).json({ message: "Publisher deleted successfully." });
   } catch (error) {

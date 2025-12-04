@@ -6,7 +6,7 @@ class UserService {
       firstName: payload.firstName,
       lastName: payload.lastName,
       gender: payload.gender,
-      birthDay: payload.birthDay,
+      birthDate: payload.birthDate,
       address: payload.address,
       phone: payload.phone,
       role: payload.role,
@@ -26,8 +26,8 @@ class UserService {
 
   async create(payload) {
     try {
-      const User = await this.extractData(payload);
-      const result = new User(User);
+      const user = await this.extractData(payload);
+      const result = new User(user);
 
       return await result.save();
     } catch (error) {
@@ -39,7 +39,9 @@ class UserService {
   async find(filter) {
     return await User.find(filter);
   }
-
+  async findOne(filter) {
+    return await User.findOne(filter);
+  }
   async findByName(firstName) {
     return await User.find({
       firstName: { $regex: firstName, $options: "i" },

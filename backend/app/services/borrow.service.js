@@ -5,14 +5,9 @@ class BorrowService {
       user_id: payload.user_id,
       staff_id: payload.staff_id,
       book_id: payload.book_id,
-      borrowDate: payload.borrowDate || new Date(),
-      returnDate:
-        payload.returnDate ||
-        (() => {
-          const date = new Date();
-          date.setDate(date.getDate() + 15);
-          return date;
-        })(),
+      borrowDate: payload.borrowDate,
+      deadline: payload.deadline,
+      returnDate: payload.returnDate,
       status: payload.status || "pending",
     };
 

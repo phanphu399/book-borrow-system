@@ -21,7 +21,7 @@ class StaffService {
     return (await this.api.delete(`/${id}`)).data;
   }
 
-  async deleteAllStaff() {
+  async deleteAllStaf() {
     return (await this.api.delete("/")).data;
   }
 

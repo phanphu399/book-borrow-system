@@ -8,6 +8,8 @@ class BookService {
       publishYear: payload.publishYear,
       publisher_id: payload.publisher_id,
       author: payload.author,
+      categories: payload.categories,
+      image_URL: payload.image_URL,
     };
     Object.keys(book).forEach((key) => {
       return book[key] === undefined && delete book[key];

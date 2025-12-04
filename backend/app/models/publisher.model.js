@@ -7,6 +7,8 @@ const publisherSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    email: { type: String, trim: true },
+
     address: {
       type: String,
       trim: true,

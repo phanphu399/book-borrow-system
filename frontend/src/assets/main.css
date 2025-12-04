@@ -1,17 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 body {
   font-family: "Roboto", sans-serif;
   font-variation-settings: "wght" 400;
   font-style: normal;
 }
 
-/* Bold */
 h1 {
   font-variation-settings: "wght" 700;
 }
 
-/* Italic */
 em {
   font-variation-settings: "wght" 400;
   font-style: italic;
+}
+.z-top-toast,
+.notivue,
+.notivue-container {
+  z-index: 99999 !important;
 }

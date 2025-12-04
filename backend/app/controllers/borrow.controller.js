@@ -2,18 +2,15 @@ import BorrowService from "../services/borrow.service.js";
 import ApiError from "../api-error.js";
 const borrowService = new BorrowService();
 async function create(req, res, next) {
-  if (
-    !req.body?.user_id ||
-    !req.body?.book_id ||
-    !req.body?.staff_id ||
-    !req.body?.borrowDate
-  )
+  if (!req.body?.user_id || !req.body?.book_id || !req.body?.borrowDate) {
     return next(
       new ApiError(
         400,
         "Data to creating the book borrowing record cannot be empty"
       )
     );
+  }
+
   // So lan muon cho mot quyen sach
   const bookBorrowCount = await borrowService.find({
     user_id: req.body.user_id,

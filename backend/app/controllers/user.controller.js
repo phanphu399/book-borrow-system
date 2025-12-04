@@ -10,11 +10,28 @@ export async function create(req, res, next) {
   if (!req.body?.username || !req.body?.password)
     return next(new ApiError(400, "Username or password cannot be empty"));
   try {
+    if (await userService.findOne({ username: req.body.username }))
+      return next(new ApiError(409, "Username or password existed"));
     const doc = await userService.create(req.body);
     return res.status(201).json(doc);
   } catch (error) {
     console.log(error);
     return next(new ApiError(500, "Error while creating User"));
+  }
+}
+
+export async function checkUserName(req, res, next) {
+  try {
+    const userExists = await userService.findOne({ username });
+
+    if (userExists) {
+      return next(new ApiError(409, "Username existed"));
+    } else {
+      return res.status(200).json({ message: "Username is unique." });
+    }
+  } catch (error) {
+    console.error("Lỗi kiểm tra tính duy nhất:", error);
+    return next(new ApiError(500, "Error while finding username for checking"));
   }
 }
 
@@ -97,6 +114,7 @@ export async function login(req, res, next) {
       req.body.password,
       User.password
     );
+
     if (!passwordIsValid)
       return next(new ApiError(401, "Invalid username or password."));
 
@@ -109,17 +127,18 @@ export async function login(req, res, next) {
     const token = jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: "1h" } // Token hết hạn sau 1 giờ
+      { expiresIn: "5h" } // Token hết hạn sau 5 giờ
     );
 
     return res.status(200).json({
       message: "Login successful.",
-      User: {
+      user: {
+        name: User.lastName + " " + User.firstName,
         id: User._id,
         username: User.username,
         role: User.role,
       },
-      token: token, // Gửi token về Client
+      token: token,
     });
   } catch (error) {
     console.log(error);

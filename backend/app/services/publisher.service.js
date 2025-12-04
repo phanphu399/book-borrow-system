@@ -3,6 +3,7 @@ class PublisherService {
   extractData(payload) {
     const publisher = {
       name: payload.name,
+      email: payload.email,
       address: payload.address,
     };
     Object.keys(publisher).forEach((key) => {

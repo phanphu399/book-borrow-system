@@ -25,18 +25,20 @@ class StaffService {
     try {
       const doc = await this.extractData(payload);
       const result = new Staff(doc);
-
       return await result.save();
     } catch (error) {
       console.log(error);
       throw error;
     }
   }
-
+  // alway return array
   async find(filter) {
     return await Staff.find(filter);
   }
-
+  // return object or null
+  async findOne(filter) {
+    return await Staff.findOne(filter);
+  }
   async findByName(fullName) {
     return await Staff.find({
       fullName: { $regex: fullName, $options: "i" },

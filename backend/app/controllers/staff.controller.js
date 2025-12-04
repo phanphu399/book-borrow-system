@@ -11,11 +11,14 @@ export async function create(req, res, next) {
     return next(new ApiError(400, "Username or password cannot be empty"));
   }
   try {
+    if (await staffService.findOne({ username: req.body.username }))
+      return next(new ApiError(409, "Username or password existed"));
     const doc = await staffService.create(req.body);
     if (!doc) return next(new ApiError(404, "Staff not found"));
     return res.status(201).json(doc);
   } catch (error) {
     console.log(error);
+    // console.log(req.body);
     return next(new ApiError(500, "Error while creating Staff "));
   }
 }
@@ -98,6 +101,7 @@ export async function login(req, res, next) {
       req.body.password,
       staff.password
     );
+
     if (!passwordIsValid)
       return next(new ApiError(401, "Invalid username or password."));
 
@@ -110,17 +114,19 @@ export async function login(req, res, next) {
     const token = jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: "1h" } // Token hết hạn sau 1 giờ
+      { expiresIn: "5h" } // Token hết hạn sau 5 giờ
     );
 
+    // Gửi token về Client
     return res.status(200).json({
       message: "Login successful.",
       staff: {
         id: staff._id,
+        name: staff.fullName,
         username: staff.username,
         role: staff.role,
       },
-      token: token, // Gửi token về Client
+      token: token,
     });
   } catch (error) {
     console.log(error);

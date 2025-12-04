@@ -16,15 +16,11 @@ const staffSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    position: {
-      type: String,
-      trim: true,
-    },
     address: {
       type: String,
       trim: true,
     },
-    phoneNumber: {
+    phone: {
       type: String,
       trim: true,
     },

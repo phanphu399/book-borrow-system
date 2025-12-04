@@ -15,6 +15,10 @@ const bookSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    categories: {
+      type: Array,
+      required: true,
+    },
     publishYear: {
       type: Number,
       required: true,
@@ -27,6 +31,11 @@ const bookSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Publisher",
       required: true,
+    },
+    image_URL: {
+      type: String,
+      default:
+        "https://www.pngplay.com/wp-content/uploads/15/Blue-Book-PNG-Background.png",
     },
   },
   {
