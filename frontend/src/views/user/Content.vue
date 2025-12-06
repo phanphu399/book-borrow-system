@@ -35,17 +35,29 @@ onMounted(fetchBooks);
 
 <template>
   <div class="home-page">
-    <section class="mx-3 rounded py-5 my-4 ">
-      <div class="text-center">
+    <section
+      class="hero-animated text-white min-vh-100 d-flex align-items-center py-5 justify-content-center"
+      style="
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.75)
+          ),
+          url('https://www.elle.vn/wp-content/uploads/2020/03/23/394939/tu-sach-mien-phi.jpg')
+            center/cover no-repeat;
+        backdrop-filter: blur(2px);
+      "
+    >
+      <div class="text-center position-relative" style="z-index: 2">
         <h1 class="display-5 fw-bold mb-3">Chào Mừng Đến Với Thư Viện Sách</h1>
-        <p class="lead text-muted">
+        <p class="lead opacity-75">
           Khám phá hàng ngàn đầu sách từ văn học, khoa học đến thiếu nhi.
         </p>
 
         <div v-if="!isAuthenticated" class="mt-3">
           <router-link
             :to="{ name: 'user.register' }"
-            class="btn btn-primary btn-lg px-4 rounded-pill fw-semibold"
+            class="btn btn-warning btn-lg px-4 rounded-pill fw-semibold shadow"
           >
             Đăng Ký Ngay <i class="bi bi-arrow-right"></i>
           </router-link>

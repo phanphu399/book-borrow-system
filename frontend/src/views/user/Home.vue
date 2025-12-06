@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import AppHeader from "@/components/AppHeader.vue";
+import AppHeader from "@/views/AppHeader.vue";
+import AppFooter from "../AppFooter.vue";
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import AppHeader from "@/components/AppHeader.vue";
         <router-view />
       </div>
     </main>
+    <AppFooter />
   </div>
 </template>
 

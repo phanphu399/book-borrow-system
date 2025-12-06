@@ -99,7 +99,7 @@ const closeModal = () => {
     @click.self="closeModal"
     style="background-color: rgba(0, 0, 0, 0.5)"
   >
-    <div class="modal-dialog modal-md" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">
@@ -123,7 +123,7 @@ const closeModal = () => {
               />
               <ErrorMessage name="title" class="text-danger small" />
             </div>
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
               <div class="col-md-6">
                 <label class="form-label">Tác Giả</label>
                 <Field

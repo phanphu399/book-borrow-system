@@ -165,7 +165,7 @@ const handleReturn = async () => {
             <div class="alert alert-info p-2 mt-2">
               Yêu cầu sẽ được nhân viên xem xét !
             </div>
-            <!-- {{ borrowing }} -->
+
             <div class="card p-3 shadow-sm mb-3">
               <p class="mb-1">
                 <strong>Tên:</strong>
@@ -246,7 +246,7 @@ const handleReturn = async () => {
                 >
                   <p class="mb-1">
                     <strong>Nhân viên duyệt: </strong>
-                    {{ borrowing.staff.fullName || "Đang load ..." }}
+                    {{ borrowing.staff.fullName || "Đang tải..." }}
                   </p>
                 </div>
               </div>

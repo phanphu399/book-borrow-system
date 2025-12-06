@@ -79,7 +79,7 @@ const closeModal = () => {
     @click.self="closeModal"
     style="background-color: rgba(0, 0, 0, 0.5)"
   >
-    <div class="modal-dialog modal-md" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">
@@ -111,17 +111,18 @@ const closeModal = () => {
               <ErrorMessage name="fullName" class="text-danger small" />
             </div>
 
-            <div class="mb-3" v-if="props.mode === 'create'">
+            <div class="mb-3">
               <label class="form-label">Tài khoản *</label>
               <Field
                 type="String"
                 name="username"
+                autocomplete="username"
                 class="form-control"
                 v-model="formData.username"
               />
               <ErrorMessage name="username" class="text-danger small" />
             </div>
-            <div class="mb-3" v-if="props.mode === 'create'">
+            <div class="mb-3">
               <label for="password" class="form-label">Mật khẩu *</label>
 
               <div class="input-group">
@@ -129,6 +130,7 @@ const closeModal = () => {
                   :type="passwordFieldType"
                   name="password"
                   id="password"
+                  autocomplete="current-password"
                   class="form-control"
                   v-model="formData.password"
                 />

@@ -17,11 +17,11 @@ const currentPage = ref(1);
 const itemsPerPage = 7;
 const statusMap = {
   pending: {
-    label: "Chờ duyệt",
+    label: "Chờ duyệt mượn",
     class: "bg-primary-subtle text-black fw-semibold",
   },
   pending_return: {
-    label: "Chờ trả",
+    label: "Chờ duyệt trả",
     class: "bg-primary-subtle text-black fw-semibold",
   },
   pending_approve: {

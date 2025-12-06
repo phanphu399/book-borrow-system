@@ -1,5 +1,12 @@
+<script setup>
+
+</script>
+
 <template>
-  <aside class="sidebar bg-white shadow-lg h-100">
+  <aside
+    class="sidebar bg-white shadow-lg"
+    
+  >
     <nav class="p-3 mt-5">
       <ul class="nav flex-column gap-3">
         <li class="nav-item">
@@ -8,7 +15,8 @@
             class="nav-link sidebar-link"
             active-class="active-link"
           >
-            <i class="bi bi-clipboard-check me-2"></i> Phiếu Mượn
+            <i class="bi bi-clipboard-check me-2"></i>
+            <span class="sidebar-text-content">Phiếu Mượn</span>
           </router-link>
         </li>
         <li class="nav-item">
@@ -17,7 +25,8 @@
             class="nav-link sidebar-link"
             active-class="active-link"
           >
-            <i class="bi bi-collection me-2"></i> Danh mục sách
+            <i class="bi bi-collection me-2"></i>
+            <span class="sidebar-text-content">Danh mục sách</span>
           </router-link>
         </li>
         <li class="nav-item">
@@ -26,7 +35,8 @@
             class="nav-link sidebar-link"
             active-class="active-link"
           >
-            <i class="bi bi-collection me-2"></i> Nhà xuất bản
+            <i class="bi bi-collection me-2"></i>
+            <span class="sidebar-text-content">Nhà xuất bản</span>
           </router-link>
         </li>
         <li class="nav-item">
@@ -35,7 +45,8 @@
             class="nav-link sidebar-link"
             active-class="active-link"
           >
-            <i class="bi bi-people me-2"></i>Nhân viên
+            <i class="bi bi-people me-2"></i
+            ><span class="sidebar-text-content">Nhân viên</span>
           </router-link>
         </li>
         <li class="nav-item">
@@ -44,7 +55,8 @@
             class="nav-link sidebar-link"
             active-class="active-link"
           >
-            <i class="bi bi-people me-2"></i> Người dùng
+            <i class="bi bi-people me-2"></i>
+            <span class="sidebar-text-content">Người dùng</span>
           </router-link>
         </li>
         <li class="nav-item">
@@ -53,7 +65,8 @@
             class="nav-link sidebar-link"
             active-class="active-link"
           >
-            <i class="bi bi-person-gear me-2"></i> Thông tin tài khoản
+            <i class="bi bi-person-gear me-2"></i>
+            <span class="sidebar-text-content">Thông tin tài khoản</span>
           </router-link>
         </li>
       </ul>
@@ -65,6 +78,7 @@
 .sidebar {
   width: 250px;
   min-width: 250px;
+  transition: width 0.3s ease, min-width 0.3s ease;
 }
 .sidebar-link {
   color: #333;
@@ -83,5 +97,16 @@
   background-color: #3235d8;
   color: white !important;
   font-weight: 600;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+  min-width: 70px;
+}
+.sidebar.collapsed .sidebar-text-content {
+  display: none;
+}
+.sidebar.collapsed .sidebar-link .bi {
+  margin-right: 0 !important;
 }
 </style>

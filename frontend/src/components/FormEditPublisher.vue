@@ -60,7 +60,7 @@ const closeModal = () => {
     @click.self="closeModal"
     style="background-color: rgba(0, 0, 0, 0.5)"
   >
-    <div class="modal-dialog modal-md" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">

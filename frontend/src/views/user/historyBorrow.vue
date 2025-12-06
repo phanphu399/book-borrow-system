@@ -236,8 +236,8 @@ onMounted(fetchBorrows);
         >
           <thead class="table-light text-nowrap">
             <tr class="text-uppercase small text-secondary">
-              <th class="text-center" style="width: 20%">Tên sách</th>
-              <th class="text-center" style="width: 10%">Tác giả</th>
+              <th class="text-center" style="width: 18%">Tên sách</th>
+              <th class="text-center" style="width: 12%">Tác giả</th>
               <th class="text-center" style="width: 12%">Ngày mượn</th>
               <th class="text-center" style="width: 12%">Hạn trả</th>
               <th class="text-center" style="width: 12%">Ngày trả</th>
