@@ -88,7 +88,7 @@ function save() {
             <h5 v-if="props.user.role === 'staff'" class="fw-bold mb-1">
               {{ props.user.fullName }}
             </h5>
-            <p class="text-muted  mb-0">
+            <p class="text-muted mb-0">
               ( {{ props.user.role === "reader" ? "Đọc giả" : "Nhân viên" }})
             </p>
           </div>

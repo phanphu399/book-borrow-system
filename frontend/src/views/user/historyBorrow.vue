@@ -102,7 +102,6 @@ const statusOrder = {
   returned: 20,
 };
 
-const timeCurrent = ref();
 const getStatusValue = (s) => statusOrder[s] || 99;
 
 const filteredBorrow = computed(() => {
@@ -286,7 +285,7 @@ onMounted(fetchBorrows);
                 </span>
               </td>
 
-              <td class="d-flex gap-2 justify-content-end">
+              <!-- <td class="d-flex gap-2 justify-content-end">
                 <button
                   @click="handleBorrow(br)"
                   class="btn btn-sm btn-outline-primary"
@@ -303,6 +302,28 @@ onMounted(fetchBorrows);
                 >
                   <i class="bi bi-info-circle"></i>
                 </button>
+              </td> -->
+              <td>
+                <div class="d-flex gap-2 justify-content-end">
+                  <button
+                    @click="handleBorrow(br)"
+                    class="btn btn-sm btn-outline-primary"
+                    v-if="
+                      ['pending', 'borrowing', 'overdue'].includes(br.status)
+                    "
+                    :title="getActionLabel(br)"
+                  >
+                    <i :class="getActionIcon(br)"></i>
+                  </button>
+
+                  <button
+                    title="Chi tiết"
+                    class="btn btn-sm btn-outline-primary"
+                    @click="getBorrow(br)"
+                  >
+                    <i class="bi bi-info-circle"></i>
+                  </button>
+                </div>
               </td>
             </tr>
           </tbody>
