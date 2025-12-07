@@ -1,17 +1,39 @@
 import * as yup from "yup";
 
-const date = new Date();
-date.setDate(date.getDay() + 15);
 export const borrowSchema = yup.object({
   borrowDate: yup
     .date()
     .required("Vui lòng cung cấp ngày mượn")
-    .typeError("Ngày mượn không hợp lệ"),
+    .typeError("Ngày mượn không hợp lệ")
+    .test(
+      "borrowDate-deadline-check",
+      "Lưu ý: ngày mượn phải trước ngày trả và không quá 15 ngày",
+      function (borrowDate) {
+        const deadline = this.resolve(yup.ref("deadline"));
+        if (!borrowDate || !deadline) return true;
+
+        const max = new Date(borrowDate);
+        max.setDate(max.getDate() + 15);
+
+        return deadline >= borrowDate && deadline <= max;
+      }
+    ),
 
   deadline: yup
     .date()
     .nullable(true)
     .typeError("Ngày trả không hợp lệ")
-    .min(yup.ref("borrowDate"), "Ngày trả không được trước ngày mượn")
-    .max(date, "Lưu ý: Mỗi phiếu chỉ được mượn tối đa 15 ngày"),
+    .test(
+      "deadline-valid",
+      "Lưu ý: Ngày trả phải sau ngày mượn và không quá 15 ngày",
+      function (deadline) {
+        const borrowDate = this.resolve(yup.ref("borrowDate"));
+        if (!borrowDate || !deadline) return true;
+
+        const max = new Date(borrowDate);
+        max.setDate(max.getDate() + 15);
+
+        return deadline >= borrowDate && deadline <= max;
+      }
+    ),
 });

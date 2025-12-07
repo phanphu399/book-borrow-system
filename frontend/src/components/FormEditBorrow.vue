@@ -220,6 +220,7 @@ const handleReturn = async () => {
                     class="text-danger fw-medium small"
                   />
                 </div>
+                <!-- {{ borrowing.deadline }} -->
                 <div
                   class="col-md-6 mb-2"
                   v-if="borrowing.status === 'returned'"

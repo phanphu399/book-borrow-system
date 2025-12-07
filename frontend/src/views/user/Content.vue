@@ -43,7 +43,7 @@ onMounted(fetchBooks);
             rgba(0, 0, 0, 0.55),
             rgba(0, 0, 0, 0.75)
           ),
-          url('https://www.elle.vn/wp-content/uploads/2020/03/23/394939/tu-sach-mien-phi.jpg')
+          url('https://govi.vn/wp-content/uploads/2022/06/banner-gia-ke-thu-vien.jpg')
             center/cover no-repeat;
         backdrop-filter: blur(2px);
       "

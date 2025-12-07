@@ -63,7 +63,9 @@ const fetchBorrows = async () => {
 
     for (const br of borrows.value) {
       const deadline = new Date(br.deadline);
-      // console.log(br.book_id.title, br.status, br.deadline);
+      deadline.setHours(23, 59, 59, 999);
+      console.log(deadline, now);
+      console.log(deadline < now);
       if (br.status === "borrowing" && deadline < now) {
         await borrowService.updateBorrow(br._id, { status: "overdue" });
       }

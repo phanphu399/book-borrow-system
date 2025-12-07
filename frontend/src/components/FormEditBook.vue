@@ -2,7 +2,7 @@
 import { Form, Field, ErrorMessage } from "vee-validate";
 import { ref, reactive, watch, onMounted } from "vue";
 import { bookSchema } from "@/validations/book.validate";
-import PublisherService from "@/services/publish.service.";
+import PublisherService from "@/services/publish.service";
 import { push } from "notivue";
 
 const publisherService = new PublisherService();

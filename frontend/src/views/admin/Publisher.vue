@@ -1,5 +1,5 @@
 <script setup>
-import PublisherService from "@/services/publish.service.";
+import PublisherService from "@/services/publish.service";
 import { push } from "notivue";
 import { computed, onMounted, ref, watch } from "vue";
 import InputSearch from "@/components/InputSearch.vue";

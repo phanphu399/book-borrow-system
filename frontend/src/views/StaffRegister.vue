@@ -2,8 +2,8 @@
 import { Form, Field, ErrorMessage } from "vee-validate";
 import { push } from "notivue";
 import {
-  staf,
-  staffCreateSchemafCreateSchema,
+  staffUpdateSchema,
+  staffCreateSchema,
 } from "@/validations/staff.validate";
 import { ref, computed } from "vue";
 import router from "@/router";
